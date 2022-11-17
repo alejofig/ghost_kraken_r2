@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "chai": "^4.3.7",
-    "kraken-node": "^1.0.24"
+    "kraken-node": "^1.0.24",
+    "playwright": "^1.28.0",
+    "resemblejs": "^4.1.0"
   },
   "scripts": {
     "kraken": "./node_modules/kraken-node/bin/kraken-node run",
