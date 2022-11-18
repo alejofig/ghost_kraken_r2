@@ -1,6 +1,7 @@
 import {faker} from "@faker-js/faker";
 import { expect } from "chai";
 
+const profile_name = "profile";
 const ghost_version = "old";
 const endpoint = "http://uniandes.ingenio.com.co:2367/ghost/";
 describe('Admin create and delete elements in configuration', () => {
@@ -9,8 +10,7 @@ describe('Admin create and delete elements in configuration', () => {
 
     const newName = faker.lorem.word()
 
-    cy.goAdminAndLogin(ghost_version)
-    cy.screenshot(`images/cypress/profile_${ghost_version}/login_admin`)
+    cy.goAdminAndLogin(profile_name,ghost_version)
     cy.visit(`${endpoint}#/staff/johnatan/`)
     cy.screenshot(`images/cypress/profile_${ghost_version}/go_to_my_profile`)
     cy.get("#user-name").clear().type(newName,{force: true})
@@ -24,7 +24,8 @@ describe('Admin create and delete elements in configuration', () => {
   it('Como usuario administrador voy perfil e intento cambiar el nombre, actualizo sin guardar cambios', () => {
 
     const newName = faker.lorem.word()
-    cy.goAdminAndLogin()
+
+    cy.goAdminAndLogin(profile_name,ghost_version)
     cy.visit(`${endpoint}#/staff/johnatan/`)
     cy.get("#user-name").clear().type("johnattan devia", {force:true})
     cy.get('button.gh-btn-blue').click()
@@ -40,7 +41,8 @@ describe('Admin create and delete elements in configuration', () => {
     it('Como usuario administrador me logeo e intento agregar una bio de menos de 200 caracteres', () => {
 
     const newBio = faker.lorem.words()
-    cy.goAdminAndLogin()
+
+    cy.goAdminAndLogin(profile_name,ghost_version)
     cy.visit(`${endpoint}#/staff/johnatan/`)
     cy.get("#user-bio").clear().type(newBio,{force:true})
     cy.screenshot(`images/cypress/profile_${ghost_version}/bio_less_200_characters`)
@@ -57,7 +59,8 @@ describe('Admin create and delete elements in configuration', () => {
     it('Como usuario administrador me logeo e intento agregar una bio de más de 200 caracteres', () => {
 
     const newBio = faker.lorem.words(30)
-    cy.goAdminAndLogin()
+
+    cy.goAdminAndLogin(profile_name,ghost_version)
     cy.visit(`${endpoint}#/staff/johnatan/`)
     cy.get("#user-bio").clear().type(newBio, {force:true})
     cy.screenshot(`images/cypress/profile_${ghost_version}/bio_more_200_characters`)
@@ -73,7 +76,7 @@ describe('Admin create and delete elements in configuration', () => {
   it('Como usuario administrador me logeo e intento cambiar la contraseña ingresando una inferior a 10 digitos', () => {
 
     const shortPass = "1234"
-    cy.goAdminAndLogin()
+    cy.goAdminAndLogin(profile_name,ghost_version)
     cy.visit(`${endpoint}#/staff/johnatan/`)
     cy.get("#user-password-old").clear().type(shortPass,{force:true})
     cy.screenshot(`images/cypress/profile_${ghost_version}/password_old_short`)

@@ -26,16 +26,18 @@
 
 import {faker} from "@faker-js/faker";
 
-Cypress.Commands.add('goIntoSettings', (settings) => {
+Cypress.Commands.add('goIntoSettings', (settings,feature = "general",ghost_version = "new") => {
     cy.get('.gh-nav-bottom a[href="#/settings/"]').click()
+    cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_ghost_admin`)
     cy.get('.gh-main a[href="#/settings/'+settings+'/"]').click()
+    cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_ghost_admin`)
 })
 
 Cypress.Commands.add('saveSettings', () => {
     cy.get('.view-actions button').click()
 })
 
-Cypress.Commands.add('goAdminAndLogin', (ghost_version = "new") => {
+Cypress.Commands.add('goAdminAndLogin', (feature = "general",ghost_version = "new") => {
     const username = 'jfdeviar@gmail.com'
     const password = 'pt100UNAL--'
 
@@ -45,16 +47,17 @@ Cypress.Commands.add('goAdminAndLogin', (ghost_version = "new") => {
     }
 
     cy.visit(endpoint)
-    cy.screenshot(`images/cypress/profile_${ghost_version}/navigate_ghost_admin`)
+    cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_ghost_admin`)
     cy.wait(1000)
     cy.get('input.email').type(username)
     cy.get('input.password').type(password)
     cy.get('button.login').click() // Click on button
+    cy.screenshot(`images/cypress/${feature}_${ghost_version}/login_admin`)
 })
 
-Cypress.Commands.add('goWebsite', (ghost_version = 'old') => {
+Cypress.Commands.add('goWebsite', (feature = "general",ghost_version = 'new') => {
     let endpoint = 'http://uniandes.ingenio.com.co:2368'
-    if (ghost_version === 'new') {
+    if (ghost_version === 'old') {
         endpoint = 'http://uniandes.ingenio.com.co:2367'
     }
 
