@@ -36,6 +36,11 @@ Given('I open menu invite people', async function () {
 })
 
 
+Given('I fill the input with id selector {string} with random email', async function (inputId) {
+    await this.driver.$(inputId).setValue(faker.internet.email())
+    return await delay(5000)
+})
+
 Given('I fill the input with id selector {string} with {string}', async function (inputId,email) {
     await this.driver.$(inputId).setValue(email)
     return await delay(5000)
