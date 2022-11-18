@@ -27,7 +27,7 @@ describe('Admin create and delete elements in configuration', () => {
     const newLabel = faker.lorem.word()
     cy.intercept('/ghost/api/admin/settings').as('saveSettings')
 
-    cy.goAdminAndLogin()
+    cy.goAdminAndLogin(profile_name,ghost_version)
     cy.goIntoSettings('navigation',profile_name,ghost_version)
 
     cy.get('#settings-navigation .gh-blognav-item:not(.gh-blognav-item--sortable) input[placeholder="Label"]').clear().type(newLabel)
@@ -57,7 +57,7 @@ describe('Admin create and delete elements in configuration', () => {
       })
       previewLength = $aElement.length
     })
-    cy.goAdminAndLogin()
+    cy.goAdminAndLogin(profile_name,ghost_version)
     cy.goIntoSettings('navigation',profile_name,ghost_version)
 
     cy.wait(1000)

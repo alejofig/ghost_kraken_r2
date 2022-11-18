@@ -1,16 +1,17 @@
 import {faker} from "@faker-js/faker";
 
+const ghost_version = "new";
 describe('Admin create elements in configuration', () => {
 
   it('Como usuario administrador envio una invitación y la elimino a un nuevo usuario', () => {
-
+    const profile_name = "invitation";
     const email = faker.lorem.words(1) + (Date.now()) + '@' + faker.internet.domainName()
 
     cy.intercept('/ghost/api/admin/invites/*').as('saveSettings')
 
 
-    cy.goAdminAndLogin()
-    cy.goIntoSettings('staff')
+    cy.goAdminAndLogin(profile_name,ghost_version)
+    cy.goIntoSettings('staff',profile_name,ghost_version)
 
     let previewLength = 0
     cy.wait(2000).then(() => {
@@ -25,6 +26,9 @@ describe('Admin create elements in configuration', () => {
     cy.wait(1000)
     cy.get('#new-user-email').clear().type(email)
     cy.get('.gh-roles-container .gh-radio .gh-radio-label').contains(faker.helpers.arrayElement(['Author','Editor','Administrator'])).click()
+
+    cy.screenshot(`images/cypress/${profile_name}_${ghost_version}/invitation_filled`)
+
     cy.get('.modal-footer button').click()
     cy.wait('@saveSettings')
     cy.reload()
@@ -32,7 +36,7 @@ describe('Admin create elements in configuration', () => {
     cy.get('.apps-configured a[href="#revoke"]').should(($aElement) => {
       expect($aElement).to.have.length(previewLength + 1)
     })
-
+    cy.screenshot(`images/cypress/${profile_name}_${ghost_version}/invitation_list`)
     cy.get('.apps-configured a[href="#revoke"]').first().click()
     cy.wait('@saveSettings')
     cy.reload()
@@ -45,10 +49,10 @@ describe('Admin create elements in configuration', () => {
 
 
     it('Como usuario administrador invito a un usuario ya existente', () => {
-
+        const profile_name = "invitation_repeated";
         cy.intercept('/ghost/api/admin/invites/*').as('saveSettings')
-        cy.goAdminAndLogin()
-        cy.goIntoSettings('staff')
+        cy.goAdminAndLogin(profile_name,ghost_version)
+        cy.goIntoSettings('staff',profile_name,ghost_version)
 
         cy.get(".view-actions button.gh-btn-primary").click()
         cy.wait(1000)
@@ -56,6 +60,8 @@ describe('Admin create elements in configuration', () => {
         cy.get('.gh-roles-container .gh-radio .gh-radio-label').contains(faker.helpers.arrayElement(['Author','Editor','Administrator'])).click()
         cy.get('.modal-footer button').click()
         cy.wait('@saveSettings')
+
+        cy.screenshot(`images/cypress/${profile_name}_${ghost_version}/invitation_error`)
         cy.get('.response').contains('A user with that email address already exists').should('be.visible')
 
 
