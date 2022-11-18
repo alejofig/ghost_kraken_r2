@@ -2,17 +2,15 @@ import {faker} from "@faker-js/faker";
 import { expect } from "chai";
 
 const ghost_version = "old";
-const endpoint = "http://localhost:3001/ghost/";
+const endpoint = "http://uniandes.ingenio.com.co:2367/ghost/";
 describe('Admin create and delete elements in configuration', () => {
 
   it('Como usuario administrador voy perfil e intento cambiar el nombre, guardo cambios y verifico que se haya guardado', () => {
 
     const newName = faker.lorem.word()
 
-    cy.goAdminAndLogin()
+    cy.goAdminAndLogin(ghost_version)
     cy.screenshot(`images/cypress/profile_${ghost_version}/login_admin`)
-    // cy.get('div.gh-user-avatar').click()
-    // cy.get('li a[href="#/staff/johnatan/"]').click()
     cy.visit(`${endpoint}#/staff/johnatan/`)
     cy.screenshot(`images/cypress/profile_${ghost_version}/go_to_my_profile`)
     cy.get("#user-name").clear().type(newName,{force: true})

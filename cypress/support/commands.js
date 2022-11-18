@@ -35,20 +35,16 @@ Cypress.Commands.add('saveSettings', () => {
     cy.get('.view-actions button').click()
 })
 
-Cypress.Commands.add('goAdminAndLogin', () => {
+Cypress.Commands.add('goAdminAndLogin', (ghost_version = "new") => {
     const username = 'jfdeviar@gmail.com'
     const password = 'pt100UNAL--'
-    const new_endpoint = 'http://uniandes.ingenio.com.co:2368/ghost'
-    const old_endpoint = 'http://localhost:3001/ghost/'
 
-    var ghost_version = "old";
-
-    var actual = old_endpoint
-    if (actual === new_endpoint) {
-        var ghost_version = "new";
+    let endpoint = 'http://uniandes.ingenio.com.co:2368/ghost'
+    if (ghost_version === 'old') {
+        endpoint = 'http://uniandes.ingenio.com.co:2367/ghost'
     }
-    cy.visit(actual)
 
+    cy.visit(endpoint)
     cy.screenshot(`images/cypress/profile_${ghost_version}/navigate_ghost_admin`)
     cy.wait(1000)
     cy.get('input.email').type(username)
@@ -56,6 +52,11 @@ Cypress.Commands.add('goAdminAndLogin', () => {
     cy.get('button.login').click() // Click on button
 })
 
-Cypress.Commands.add('goWebsite', () => {
-    cy.visit('http://uniandes.ingenio.com.co:2368')
+Cypress.Commands.add('goWebsite', (ghost_version = 'old') => {
+    let endpoint = 'http://uniandes.ingenio.com.co:2368'
+    if (ghost_version === 'new') {
+        endpoint = 'http://uniandes.ingenio.com.co:2367'
+    }
+
+    cy.visit(endpoint)
 })
