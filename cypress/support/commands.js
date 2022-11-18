@@ -27,11 +27,24 @@
 import {faker} from "@faker-js/faker";
 
 Cypress.Commands.add('goIntoSettings', (settings,feature = "general",ghost_version = "new") => {
-    cy.get('.gh-nav-bottom a[href="#/settings/"]').click()
-    cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_ghost_settings`)
-    cy.get('.gh-main a[href="#/settings/'+settings+'/"]').click()
+
+    if (ghost_version === 'new'){
+        cy.get('.gh-nav-bottom a[href="#/settings/"]').click()
+        cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_ghost_settings`)
+
+        cy.get('.gh-main a[href="#/settings/'+settings+'/"]').click()
+        cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_ghost_settings_${settings}`)
+        return
+    }
+
+    cy.get('.gh-nav-body a[href="#/settings/'+settings+'/"]').click()
     cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_ghost_settings_${settings}`)
+
+
+
 })
+
+
 
 Cypress.Commands.add('saveSettings', () => {
     cy.get('.view-actions button').click()
