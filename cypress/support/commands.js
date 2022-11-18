@@ -38,9 +38,19 @@ Cypress.Commands.add('saveSettings', () => {
 Cypress.Commands.add('goAdminAndLogin', () => {
     const username = 'jfdeviar@gmail.com'
     const password = 'pt100UNAL--'
+    const new_endpoint = 'http://uniandes.ingenio.com.co:2368/ghost'
+    const old_endpoint = 'http://localhost:3001/ghost/'
 
-    cy.visit('http://uniandes.ingenio.com.co:2368/ghost')
-    cy.screenshot('images/cypress/profile/navigate_ghost_admin')
+    var ghost_version = "old";
+
+    var actual = old_endpoint
+    if (actual === new_endpoint) {
+        var ghost_version = "new";
+    }
+    cy.visit(actual)
+
+    cy.screenshot(`images/cypress/profile_${ghost_version}/navigate_ghost_admin`)
+    cy.wait(1000)
     cy.get('input.email').type(username)
     cy.get('input.password').type(password)
     cy.get('button.login').click() // Click on button
