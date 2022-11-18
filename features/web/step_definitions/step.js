@@ -5,7 +5,6 @@ const returns = {}
 
 
 
-
 async function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
 }
@@ -718,4 +717,15 @@ Then('I Check page has the random title', async function () {
     let titleHtml = await this.driver.$("h1.single-title")
     expect(await titleHtml.getText()).equal(returns['randomPageTitle'])
     return await delay(5000)
+})
+
+Then('I take a snapshot {string} step, {string} feature', async function (step_name,feature_name){
+    const fs = require('fs');
+    await this.driver.takeScreenshot().then(function(data){
+        var base64Data = data.replace(/^data:image\/png;base64,/,"")
+        fs.mkdirSync(`images/kraken/${feature_name}`, { recursive: true });
+        fs.writeFile(`images/kraken/${feature_name}/${step_name}.png`, base64Data, 'base64', function(err) {
+             if(err) console.log(err);
+        });
+     });
 })

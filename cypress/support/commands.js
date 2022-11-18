@@ -40,6 +40,7 @@ Cypress.Commands.add('goAdminAndLogin', () => {
     const password = 'pt100UNAL--'
 
     cy.visit('http://uniandes.ingenio.com.co:2368/ghost')
+    cy.screenshot('images/cypress/profile/navigate_ghost_admin')
     cy.get('input.email').type(username)
     cy.get('input.password').type(password)
     cy.get('button.login').click() // Click on button
