@@ -7,7 +7,11 @@
   },
   "scripts": {
     "kraken": "./node_modules/kraken-node/bin/kraken-node run",
-    "cypress": "./node_modules/.bin/cypress open"
+    "cypress": "./node_modules/.bin/cypress open",
+    "resemble": "node ./resemble/resemble_profile.js",
+    "resemble_results": "open ./results_resemble/report.html", 
+    "preresemble_all": "npm run resemble",
+    "resemble_all": "npm run resemble_results"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
