@@ -30,14 +30,14 @@ Cypress.Commands.add('goIntoSettings', (settings,feature = "general",ghost_versi
 
     if (ghost_version === 'new'){
         cy.get('.gh-nav-bottom a[href="#/settings/"]').click()
-        cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_ghost_settings`)
-
         cy.get('.gh-main a[href="#/settings/'+settings+'/"]').click()
+        cy.wait(1000)
         cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_ghost_settings_${settings}`)
         return
     }
 
     cy.get('.gh-nav-body a[href="#/settings/'+settings+'/"]').click()
+    cy.wait(1000)
     cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_ghost_settings_${settings}`)
 
 
@@ -60,19 +60,30 @@ Cypress.Commands.add('goAdminAndLogin', (feature = "general",ghost_version = "ne
     }
 
     cy.visit(endpoint)
-    cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_ghost_admin`)
     cy.wait(1000)
+    cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_ghost_admin`)
     cy.get('input.email').type(username)
     cy.get('input.password').type(password)
     cy.get('button.login').click() // Click on button
+    cy.wait(1000)
     cy.screenshot(`images/cypress/${feature}_${ghost_version}/login_admin`)
 })
 
 Cypress.Commands.add('goWebsite', (feature = "general",ghost_version = 'new') => {
+    
     let endpoint = 'http://uniandes.ingenio.com.co:2368'
     if (ghost_version === 'old') {
         endpoint = 'http://uniandes.ingenio.com.co:2367'
     }
 
     cy.visit(endpoint)
+<<<<<<< HEAD
+    cy.wait(1000)
+    cy.screenshot(`images/cypress/${feature}_${ghost_version}/new_site`)
+
+
+=======
+    cy.screenshot(`images/cypress/${feature}_${ghost_version}/main_website`)
+    cy.wait(1000)
+>>>>>>> e49c608cfb87c87e312e5875ae9b47bbd0d2db9c
 })

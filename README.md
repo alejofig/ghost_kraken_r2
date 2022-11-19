@@ -1,15 +1,3 @@
-Recomendaciones para la entrega de esta semana:
-
- No olviden que los readme deben claramente especificar las versiones del sistema bajo pruebas, y las versiones de las herramientas y dependencias, puertos, usuarios, etc. Si al seguir el readme las pruebas no se ejecutan no podemos calificar los casos de prueba ni las implementaciones de regresión visual. Hagan los readme como una receta, para alguien que nunca ha ejecutado los pasos. Hagan el readme para que no sea propenso a errores, por ejemplo que no nos toque modificar varios archivo
-
-No vamos a revisar ramas de desarrollo ni repositorios diferentes. La entrega de la semana debe estar en la rama principal de un solo repositorio
-
-Recuerden que la toma de screenshots debe ser para cada paso de los escenarios, es decir se deben ejecutar después de cada paso- La regresión visual se debe hacer solo sobre 10 escenarios
-
-Esperamos que el reporte HTML permita ver las imágenes de ambas versiones, y la imagen de comparación (generada por resemble o backstop) por cada uno de los escenarios seleccionados
-
-Esta entrega está basada en la entrega anterior
-
 ## Escenarios contemplados para las pruebas:
 * Iniciar sesión, entrar al perfil y cambiar el nombre guardando cambios
 * Iniciar sesión, entrar al perfil y cambiar el nombre sin guardar cambios
