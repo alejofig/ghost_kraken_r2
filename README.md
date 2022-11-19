@@ -3,6 +3,15 @@
     - Nombre
     - Bio
     - Contraseña
+    
+2. Cambios asociados a la funcianlidad de Post (publicaciones) en la aplicación:
+    - Crear un nuevo post
+    - Editar un post existente que se encunetre publicado
+    
+3. Cambios asociados a la funcianlidad de Tags(Etiquetas) que permite clasificar publicaciones por categoria:
+    - Crear un nuevo Tag
+    - Editar un tag Existente
+    - Eliminar un tag luego de crearlo
 
 ## Cómo ejecutar las pruebas:
     1. Cabe aclarar que tenemos dos versiones de ghost en una instancia en internet para correrlo desde cualquier navegador.
