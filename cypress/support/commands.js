@@ -38,6 +38,7 @@ Cypress.Commands.add('goIntoSettings', (settings,feature = "general",ghost_versi
     }
 
     cy.get('.gh-nav-body a[href="#/settings/'+settings+'/"]').click()
+    cy.wait(1000)
     cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_ghost_settings_${settings}`)
 
 
@@ -69,10 +70,15 @@ Cypress.Commands.add('goAdminAndLogin', (feature = "general",ghost_version = "ne
 })
 
 Cypress.Commands.add('goWebsite', (feature = "general",ghost_version = 'new') => {
+    
     let endpoint = 'http://uniandes.ingenio.com.co:2368'
     if (ghost_version === 'old') {
         endpoint = 'http://uniandes.ingenio.com.co:2367'
     }
 
     cy.visit(endpoint)
+    cy.wait(1000)
+    cy.screenshot(`images/cypress/${feature}_${ghost_version}/new_site`)
+
+
 })
