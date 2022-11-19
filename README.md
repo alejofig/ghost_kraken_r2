@@ -33,7 +33,7 @@
     - **npm run resemble_results** -> Abre el reporte generado en HTMl (se probo en Mac posiblemente no funcione en windows)
     - **npm run resemble_all** -> combina los dos anterioes, hace la comparación, crear el reporte y lo abre. (se probo en Mac posiblemente no funcione en windows)
     
-3. Ejecute los comandos segun su conveniencia si esta en mac se recomienda ejecutar **'npm run resemble_all'** ya que mostrara el proceso puede que en windows toque ejecutar **'npm run resemble'** y luego abrir el reporte manualmente con el explorador de archivos 
+3. Ejecute los comandos segun su conveniencia si esta en mac se recomienda ejecutar **'npm run resemble_all'** ya que se ejecutara el proceso completo. Puede que en windows toque ejecutar **'npm run resemble'** y luego abrir el reporte manualmente con el explorador de archivos 
 
 
 ## Funcionalidades contempladas
