@@ -57,3 +57,14 @@
 * Crear Tag
 * Editar Tag
 * Eliminar Tag
+
+# Reportes
+## Reporte con Backstop
+### Requisitos
+    - BackstopJS v6.1.4
+    - Node 16.18.0
+    - Navegador web
+### Pasos a seguir
+1. El reporte ya esta generado, se puede consultar desde la carpeta raiz, dirigiendose a "backstop_data/html_report/index.html" abriendo el archivo con el navegador de su preferencia
+2. En la carpeta raiz del proyecto ejecutar ```backstop test```
+3. El programa ejecutará el reporte y automaticamente te mostrará las diferencias, puedes volver al paso 1 si tu navegador no se abrio solo
