@@ -40,7 +40,7 @@ describe("Admin create new post", () => {
     cy.get("#tag-description").clear().type(description);
 
     cy.get("button.gh-btn.gh-btn-primary.gh-btn-icon.ember-view").click();
-    cy.wait(1000);
+    cy.wait(1500);
     cy.screenshot(`images/cypress/${feature}_${ghost_version}/edited_tag`);
 
     cy.visit("http://uniandes.ingenio.com.co:2368/ghost/#/tags");
