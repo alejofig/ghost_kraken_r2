@@ -67,7 +67,7 @@
     - Node 14.21.0
     - Navegador web
 ### Pasos a seguir
-1. El reporte ya esta generado, se puede consultar desde la carpeta raiz, dirigiendose a "results_resemble" abriendo el archivo con el navegador de su preferencia
+1. El reporte ya esta generado, se puede consultar desde la carpeta raiz, dirigiendose a "results_resemble/report.html" abriendo el archivo con el navegador de su preferencia
 2. Es importante tener todos los paquetes del proyecto para esto ejecute **"npm install"**
 3. Se crearon varios scripts en el packaje.json para automatizar el proceso **que se ejecutan desde la carpeta principal del repo**
 
