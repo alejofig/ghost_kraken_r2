@@ -63,7 +63,7 @@
 
 ## Como ejecutar el Visual Regression Testing con Resemble
 ### Requisitos
-    - Resembel v4.1.0
+    - Resemble v4.1.0
     - Node 14.21.0
     - Navegador web
 ### Pasos a seguir
