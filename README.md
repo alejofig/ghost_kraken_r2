@@ -24,7 +24,15 @@
                 Si se quieren ejecutar las pruebas de cypress con la segunda versión de ghost, se debe usar el puerto: 2367
                 Cambiando la variable en cada archivo de cypress ghost versión old/new según corresponda.
     5. Seleccionar pruebas e2e y seleccionar en el navegador el archivo a correr.
-
+    
+### Como ejecutar el Visual Regression Testing con Resemble
+    1. Es importante tener todos los paquetes del proyecto para esto ejecute "npm install"
+    2. Se crearon varios scripts en el packaje.json para automatizar el proceso **que se ejecutan desde la carpeta principal del repo**
+        1. npm run resemble -> Ejecuta la comparación de las imagenes y crear un reporte en la carpeta results_resemble 
+        2. npm run resemble_results -> Abre el reporte generado en HTMl (se probo en Mac posiblemente no funcione en windows)
+        3. npm run resemble_all -> combina los dos anterioes, hace la comparación, crear el reporte y lo abre. (se probo en Mac posiblemente no funcione en windows)
+    3. Ejecute los comandos segun su conveniencia si esta en mac se recomienda ejecutar 'npm run resemble_all' ya que mostrara el proceso puede que en windows toque ejecutar 'npm run resemble' y luego abrir el reporte manualmente con el explorador de archivos 
+    
 
 ## Funcionalidades contempladas
 * Iniciar sesión
