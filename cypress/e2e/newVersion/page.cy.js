@@ -24,7 +24,8 @@ describe("Admin create/cancel/edit page", (ghost_version = "new") => {
     cy.wait(3000);
     cy.screenshot(
       `images/cypress/${feature}_${ghost_version}/create_page_success`
-    );    
+    );  
+    cy.wait(3000);  
     let titleUrl = title.replaceAll(" ", "-").toLowerCase();
     cy.visit(`http://uniandes.ingenio.com.co:2368/${titleUrl}/`);
     cy.wait(3000);
@@ -79,15 +80,13 @@ describe("Admin create/cancel/edit page", (ghost_version = "new") => {
 
     cy.get("textarea.gh-editor-title").clear().type(title);
     cy.get("article.koenig-editor").clear().type(description);
-    cy.get("button.gh-editor-save-trigger").click();
-    cy.get("span.gh-notification-actions a")
-      .invoke("removeAttr", "target")
-      .click();
-    cy.wait(3000);
-    cy.screenshot(`images/cypress/${feature}_${ghost_version}/edited_pages`);
-
+    cy.get("button.gh-publish-trigger").click();
     cy.get("button.gh-btn.gh-btn-black.gh-btn-large").click();
     cy.get("button.gh-btn.gh-btn-pulse").click();
+    cy.wait(3000);
+    cy.screenshot(`images/cypress/${feature}_${ghost_version}/edited_pages_success`);
+    
+
   });
 
 });

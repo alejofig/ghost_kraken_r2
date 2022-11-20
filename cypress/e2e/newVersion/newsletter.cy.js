@@ -8,13 +8,23 @@ describe('Admin add newsletter', (ghost_version = "new") => {
     const feature="create_newsletter"
     cy.intercept("/ghost/api/admin/settings").as("saveSettings");
     cy.goAdminAndLogin(feature)
-    cy.get('.gh-nav-bottom a[href="#/settings/"]').click()
-    cy.get('.gh-main a[href="#/settings/newsletters/]').click()
-    cy.wait(3000);
+    cy.goIntoSettings('newsletters',feature,ghost_version)
+
+    let previewLength = 0
+    cy.wait(2000).then(() => {
+        if (Cypress.$('.apps-configured a[href="#revoke"]').length > 0) {
+            cy.get('.apps-configured a[href="#revoke"]').then(($aElement) => {
+                previewLength = $aElement.length
+            })
+        }
+    })
     cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_newsletter`);
+    cy.get('a[href*="#/settings/newsletters/new/"]').click()
+    cy.wait(3000);
     cy.get('#newsletter-title').type(title);
     cy.get("textarea.gh-input").type(description);
-    cy.get('button.gh-btn-primary').click()
+    cy.wait(3000);
+    cy.get("button.gh-btn.gh-btn-icon.gh-btn-primary.ember-view").click();
     cy.wait(3000);
     cy.screenshot(`images/cypress/${feature}_${ghost_version}/add_newsletter`);
 
@@ -26,15 +36,25 @@ describe('Admin add newsletter', (ghost_version = "new") => {
     const feature="cancel_newsletter"
     cy.intercept("/ghost/api/admin/settings").as("saveSettings");
     cy.goAdminAndLogin(feature)
-    cy.get('.gh-nav-bottom a[href="#/settings/"]').click()
-    cy.get('.gh-main a[href="#/settings/newsletters/]').click()
-    cy.wait(3000);
+    cy.goIntoSettings('newsletters',feature,ghost_version)
+
+    let previewLength = 0
+    cy.wait(2000).then(() => {
+        if (Cypress.$('.apps-configured a[href="#revoke"]').length > 0) {
+            cy.get('.apps-configured a[href="#revoke"]').then(($aElement) => {
+                previewLength = $aElement.length
+            })
+        }
+    })
     cy.screenshot(`images/cypress/${feature}_${ghost_version}/navigate_newsletter_cancel`);
+    cy.get('a[href*="#/settings/newsletters/new/"]').click()
+    cy.wait(3000);
     cy.get('#newsletter-title').type(title);
     cy.get("textarea.gh-input").type(description);
     cy.wait(3000);
+    cy.get("button.gh-btn.gh-btn-icon.gh-btn-primary.ember-view").click();
+    cy.wait(3000);
     cy.screenshot(`images/cypress/${feature}_${ghost_version}/cancel_newsletter`);
-    cy.get('button.gh-btn').click()
 
   })
 
