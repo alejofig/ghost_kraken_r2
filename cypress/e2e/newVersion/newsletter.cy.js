@@ -24,7 +24,7 @@ describe('Admin add newsletter', (ghost_version = "new") => {
     cy.get('#newsletter-title').type(title);
     cy.get("textarea.gh-input").type(description);
     cy.wait(3000);
-    cy.get("button.gh-btn.gh-btn-icon.gh-btn-primary.ember-view").click();
+    cy.get(".modal-footer button.gh-btn.gh-btn-icon.gh-btn-primary.ember-view").click();
     cy.wait(3000);
     cy.screenshot(`images/cypress/${feature}_${ghost_version}/add_newsletter`);
 
@@ -52,7 +52,7 @@ describe('Admin add newsletter', (ghost_version = "new") => {
     cy.get('#newsletter-title').type(title);
     cy.get("textarea.gh-input").type(description);
     cy.wait(3000);
-    cy.get("button.gh-btn.gh-btn-icon.gh-btn-primary.ember-view").click();
+    cy.get(".modal-footer button.gh-btn:not(.gh-btn-primary)").click();
     cy.wait(3000);
     cy.screenshot(`images/cypress/${feature}_${ghost_version}/cancel_newsletter`);
 
