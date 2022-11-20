@@ -1,3 +1,7 @@
+## Video
+[Link al video](https://uniandes-my.sharepoint.com/personal/jc_ramirezg12_uniandes_edu_co/_layouts/15/stream.aspx?id=%2Fpersonal%2Fjc%5Framirezg12%5Funiandes%5Fedu%5Fco%2FDocuments%2FPruebas%20Automatizadas%2FSemana%206%2FRegresionVisual%2Emp4&ga=1)
+
+
 ## Descripción de las funcionalidades de GHOST que se incluyen en las pruebas de esta semana.
 1. Cambios asociados al perfil como:
     - Nombre
