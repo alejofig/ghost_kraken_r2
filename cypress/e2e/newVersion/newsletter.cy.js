@@ -1,10 +1,11 @@
 import {faker} from "@faker-js/faker";
 
-describe('Admin add newsletter', (feature = "page", ghost_version = "new") => {
+describe('Admin add newsletter', (ghost_version = "new") => {
 
   it('Como usuario administrador me logeo e intento agregar boletin, indicar nombre, decripción y crear', () => {
     const title = faker.name.jobTitle();
     const description = faker.lorem.paragraph();
+    const feature="create_newsletter"
     cy.intercept("/ghost/api/admin/settings").as("saveSettings");
     cy.goAdminAndLogin(feature)
     cy.get('.gh-nav-bottom a[href="#/settings/"]').click()
@@ -22,6 +23,7 @@ describe('Admin add newsletter', (feature = "page", ghost_version = "new") => {
   it('Como usuario administrador me logeo e intento agregar boletin, indicar nombre, decripción y cancelar', () => {
     const title = faker.name.jobTitle();
     const description = faker.lorem.paragraph();
+    const feature="cancel_newsletter"
     cy.intercept("/ghost/api/admin/settings").as("saveSettings");
     cy.goAdminAndLogin(feature)
     cy.get('.gh-nav-bottom a[href="#/settings/"]').click()

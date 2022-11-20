@@ -1,9 +1,10 @@
 import { faker } from "@faker-js/faker";
 
-describe("Admin create/cancel/edit page", (feature = "page", ghost_version = "new") => {
+describe("Admin create/cancel/edit page", (ghost_version = "new") => {
   it("Como usuario administrador me logeo e intento crear una pagina, insertar titulo, descripcion, publicar ahora mismo", () => {
     const title = faker.name.jobTitle();
     const description = faker.lorem.paragraph();
+    const feature="create_page"
     cy.intercept("/ghost/api/admin/settings").as("saveSettings");
     cy.goAdminAndLogin(feature);
     cy.wait(3000);
@@ -35,6 +36,7 @@ describe("Admin create/cancel/edit page", (feature = "page", ghost_version = "ne
   it("Como usuario administrador me logeo e intento crear una pagina, insertar titulo, descripcion y cancelar", () => {
     const title = faker.name.jobTitle();
     const description = faker.lorem.paragraph();
+    const feature="cancel_page"
     cy.intercept("/ghost/api/admin/settings").as("saveSettings");
     cy.goAdminAndLogin(feature);
     cy.wait(3000);
@@ -60,6 +62,7 @@ describe("Admin create/cancel/edit page", (feature = "page", ghost_version = "ne
   it("Como usuario administrador me logeo e intento editar una pagina y la publico", () => {
     const title = faker.name.jobTitle();
     const description = faker.lorem.paragraph();
+    const feature="edit_page"
     cy.intercept("/ghost/api/admin/settings").as("saveSettings");
     cy.goAdminAndLogin(feature);
     cy.wait(3000);
